@@ -197,6 +197,16 @@ footer {
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
+font:hover {
+  color:#069;
+  text-decoration: underline;
+}
+
+.image_resize {
+    width:300x;
+}
+
+
 @media print, screen and (max-width: 960px) {
 
   div.wrapper {
@@ -271,3 +281,4 @@ footer {
     color:#444;
   }
 }
+
