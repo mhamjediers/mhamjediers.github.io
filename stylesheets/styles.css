@@ -1,37 +1,39 @@
 body {
   background-color: #fff;
   padding:50px;
-  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color:#595959;
   font-weight:400;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color:#222;
-  margin:0 0 20px;
 }
 
 p, ul, ol, table, pre, dl {
-  margin:0 0 20px;
+  margin:10px 0 0;
 }
 
 h1, h2, h3 {
   line-height:1.1;
+  margin:20px 0 10px;
 }
 
 h1 {
   font-size:28px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
-h2 {
+h2, h3 {
   color:#393939;
-  font-weight: 500;
+  font-size:20px;
+  font-weight: bold;
 }
 
-h3, h4, h5, h6 {
+h4, h5, h6 {
   color:#494949;
-  font-weight: 500;
+  font-weight: bold;
+  margin:10px 0 -8px;
 }
 
 a {
@@ -41,6 +43,7 @@ a {
 
 a:hover {
   color:#069;
+  text-decoration: underline;
 }
 
 a small {
@@ -170,7 +173,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:600px;
   float:right;
   padding-bottom:50px;
 }
@@ -187,7 +190,7 @@ hr {
 }
 
 footer {
-  width:270px;
+  width:250px;
   float:left;
   position:fixed;
   bottom:50px;
