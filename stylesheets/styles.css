@@ -200,6 +200,7 @@ footer {
 font:hover {
   color:#069;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .image_resize {
