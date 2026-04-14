@@ -9,33 +9,94 @@
             if (e.style.display == 'none') e.style.display = 'block';
             else e.style.display = 'none';
         }
+
+        function setPublicationFilter(topic) {
+            var cards = document.querySelectorAll('.publication-card');
+            var controls = document.querySelectorAll('.topic-filter');
+
+            cards.forEach(function(card) {
+                var topics = (card.dataset.topic || '').split(/\s+/).filter(Boolean);
+                var matches = topic === 'all' || topics.indexOf(topic) !== -1;
+                card.classList.toggle('topic-match', matches);
+                card.classList.toggle('topic-muted', !matches);
+            });
+
+            controls.forEach(function(control) {
+                control.classList.toggle('is-active', control.dataset.topic === topic);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setPublicationFilter('all');
+        });
     </script>
 
-								
-
-																		 
 	<base target="_blank">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Maik Hamjediers</title>
-																							 
-																																  
 
-							   
     <link rel="stylesheet" href="stylesheets/styles.css">
-															 
 	<link rel="stylesheet" href="academicons/css/academicons.css">
     <script src="https://kit.fontawesome.com/3b73dbe972.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-										 
-									
-										  
-					 
-																
-									
-	 
-		   
+
+    <style>
+        .topic-filter-row {
+            margin: -4px 0 18px;
+            text-indent: 0;
+            padding-left: 0;
+            line-height: 1.7;
+        }
+
+        .topic-filter {
+            display: inline-block;
+            margin-right: 14px;
+            border: 0;
+            padding: 0;
+            background: transparent;
+            color: #39c;
+            font-size: 13px;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .topic-filter:hover,
+        .topic-filter.is-active {
+            color: #069;
+            text-decoration: underline;
+        }
+
+        .topic-filter.is-active {
+            font-weight: 400;
+        }
+
+        .publication-card {
+            margin: 0 0 8px;
+            transition: opacity 0.2s ease;
+        }
+
+        .publication-card p {
+            margin: 10px 0 0;
+            text-indent: -12px;
+            padding-left: 12px;
+            color: #222;
+        }
+
+        .publication-card .topic-label {
+            display: none;
+        }
+
+        .publication-card.topic-match {
+            opacity: 1;
+        }
+
+        .publication-card.topic-muted {
+            opacity: 0.2;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,94 +115,103 @@
                 <a href="https://scholar.google.com/citations?user=mxsDev4AAAAJ"><i class="ai ai-google-scholar-square ai-1x"></i></a>&nbsp
 				<a href="https://bsky.app/profile/mhamjediers.bsky.social"><i class="fab fa-bluesky"></i></a>&nbsp
 				<a href="https://orcid.org/0000-0002-7888-0189"><i class="ai ai-orcid-square ai-1x"></i></a>&nbsp
-				<!-- <a href="https://osf.io/zdxe8/"><i class="ai ai-osf ai-1x"></i></a>&nbsp  -->
-				<!-- <a href="https://github.com/mhamjediers"><i class="fab fa-github"></i></a>&nbsp -->
 			</div>
         </header>
         <section>
 
-</p>
-<br>		
+<br>
 
 			<h3>Welcome!</h3>
 
                 <p style="text-indent: 0px; padding-left: 0px;">
-				I am a sociologist and a <a href="https://www.eui.eu/people?id=maik-hamjediers">postdoctoral Max Weber Fellow</a> at the <a href="https://www.eui.eu/en/home">European University Institute</a>. 
-													   
-										 
+				I am a sociologist and a <a href="https://www.eui.eu/people?id=maik-hamjediers">postdoctoral Max Weber Fellow</a> at the <a href="https://www.eui.eu/en/home">European University Institute</a>.
 				</p>
 
 				<p style="text-indent: 0px; padding-left: 0px;">
 				My research investigates social inequalities over the life course and the institutional and cultural mechanisms that shape them.
 				I focus in particular on the reasons and consequences of women and men working in different occupations and how compulsory services, such as military service and its civilian alternatives, shape individual and societal outcomes. <br>
 				Methodologically, I specialize in quantitative analyses of administrative and survey data, employing research designs that support causal inference in both observational and experimental settings.</p>
-				
+
 				<p style="text-indent: 0px; padding-left: 0px;">
-				Previously, I substituted for the Professorship of Microsociology at <a href="https://www.hu-berlin.de/en">Humboldt-Universität zu Berlin</a> and have been a visitor at the departments of sociology of <a href="https://www.brown.edu/academics/sociology/">Brown University</a> and <a href="https://soc.hevra.haifa.ac.il/index.php/en/">University of Haifa</a>. <br>
-				I hold a <a href="https://doi.org/10.18452/29940">PhD in Sociology</a> from <a href="https://www.hu-berlin.de/en">Humboldt-Universität zu Berlin</a>, where I also obtained a Bachelor and Master of Arts in Social Sciences.
+				Previously, I substituted for the Professorship of Microsociology at <a href="https://www.hu-berlin.de/en">Humboldt-Universit&auml;t zu Berlin</a> and have been a visitor at the departments of sociology of <a href="https://www.brown.edu/academics/sociology/">Brown University</a> and <a href="https://soc.hevra.haifa.ac.il/index.php/en/">University of Haifa</a>. <br>
+				I hold a <a href="https://doi.org/10.18452/29940">PhD in Sociology</a> from <a href="https://www.hu-berlin.de/en">Humboldt-Universit&auml;t zu Berlin</a>, where I also obtained a Bachelor and Master of Arts in Social Sciences.
 				</p>
-				
+
 				<p style="text-indent: 0px; padding-left: 0px;">
                 You can find my complete CV <a href="https://box.hu-berlin.de/f/4dd46000889a4289b987/">here</a>.
 				</p>
-			
+
 			<br>
             <div align="left">
 			<div class="header" id="publications">
             <h3>Publications</h3>
+			
+
+                <p class="topic-filter-row">
+                    <button class="topic-filter is-active" type="button" data-topic="all" onclick="setPublicationFilter('all')">All</button>
+                    <button class="topic-filter" type="button" data-topic="gender" onclick="setPublicationFilter('gender')">Gender</button>
+					<button class="topic-filter" type="button" data-topic="service" onclick="setPublicationFilter('service')">Compulsory Service</button>
+                    <button class="topic-filter" type="button" data-topic="methodology" onclick="setPublicationFilter('methodology')">Methodology</button>
+                    <button class="topic-filter" type="button" data-topic="further" onclick="setPublicationFilter('further')">Further topics</button>
+                </p>
 			</div>
 				
-				<h4>Gender inequalities</h4>
-				
-					<p>Tailored to Women, Provided to Men? Gendered Occupational Inequality in Access to Flexible Working-Time Arrangements <i>(with Aljoscha Jacobi & Tabea Naujoks)</i>. 2025. <a href="https://doi.org/10.1007/s11205-024-03483-9"><i>Social Indicators Research</i></a>, 176: 1179-1205.
-					</p>
-								
-					<p>Gender Compositions of Occupations and Firms Jointly Shape Switches from Gender-Atypical Towards More Gender-Typical Positions <i>(with Eileen Peters)</i>. 2024. <a href="https://direct.mit.edu/euso/article/26/4/1170/127369/Gender-compositions-of-occupations-and-firms"><i>European Societies</i></a>, 26 (4): 1170-1194.
-						</p>
-					
-					<p>Intersections and Commonalities: Using Matching to Decompose Wage Gaps by Gender and Nativity in Germany <i>(with Maximilian Sprengholz)</i>. 2024. <a href="https://journals.sagepub.com/doi/10.1177/07308884221141100"><i>Work and Occupations</i></a>, 51 (2): 249-286.
-					</p>
-					
-					<p>Gender-Atypical Learning Experiences of Men Reduce Occupational Sex Segregation: Evidence from the Suspension of the Civilian Service in Germany. 2023. <a href="https://doi.org/10.1177/08912432231177650"><i>Gender & Society</i></a>, 37 (4): 524-552.
-						</p>
-					
-					<p>Can Regional Gender Ideologies Account for Variation of Gender Pay Gaps? The Case of Germany. 2021. <a href="https://www.mdpi.com/2076-0760/10/9/347"><i>Social Sciences</i></a>, 10 (9): 347.
-						</p>
-					
-			
-				<br>
-				<h4>Methodology</h4>
-					
-					<p>
-					Investigating the Analytical Robustness of the Social and Behavioural Sciences <i>(with Balasz Aczel, Barnabas Szaszi, Harry T. Clelland, Brian A. Nosek, and 486 other authors])</i>. 2026. <a href="https://doi.org/10.1038/s41586-025-09844-9"><i>Nature</i></a>, 652: 135–142.
-					</p>
-					
-					<p>Comparing the Incomparable? Issues of Lacking Common Support, Functional Form Mis-Specification, and Insufficient Sample Size in Decompositions <i>(with Maximilian Sprengholz)</i>. 2024. <a href="https://doi.org/10.1177/00811750231169729"><i>Sociological Methodology</i></a>, 53 (2): 344-365.
-						</p>
-					
-					<p>Do-files for working with SOEP spell data <i>(with Paul Schmelzer & Tobias Wolfram)</i>. 2018. <a href="http://www.diw.de/documents/publikationen/73/diw_01.c.581580.de/diw_ssp0492.pdf"><i>SOEP Survey Papers</i></a>, Series G: 492.
-						</p>
-						
-					
-					
+                <div class="publication-card" data-topic="methodology">
+                    <span class="topic-label">Methodology</span>
+                    <p>Investigating the Analytical Robustness of the Social and Behavioural Sciences <i>(with Balasz Aczel, Barnabas Szaszi, Harry T. Clelland, Brian A. Nosek, and 486 other authors])</i>. 2026. <a href="https://doi.org/10.1038/s41586-025-09844-9"><i>Nature</i></a>, 652: 135&ndash;142.</p>
+                </div>
 
-					
-				<br>	
-				<h4>Further topics</h4>
-					
-					<p>
-					A threat next door? A research note on proximate interstate conflict causing willingness to fight based on Russia's invasion of Ukraine. 2026. <a href="https://doi.org/10.1093/ijpor/edag005"><i>International Journal of Public Opinion Research</i></a>, 38: online first.
-					</p>
-					
-					<p>Anti-Immigrant Bias in the Choice Between Punitive and Rehabilitative Justice <i>(with Sascha Riaz)</i>. 2025. <a href="https://doi.org/10.1017/S0007123425100884"><i>British Journal of Political Science</i></a>, 55: online first.
-					</p>
-					
-					<p>Marriage, the Risk of Overeducation, and Selection into Both: Evidence from Germany <i>(with Paul Schmelzer)</i>. 2022. <a href="https://academic.oup.com/esr/article/38/1/73/6325499?guestAccessKey=199d875e-2e3e-45fb-9bd2-adc1cf27a74d"><i>European Sociological Review</i></a>, 38 (1): 73-87.
-                       </p>
-										
-							
+                <div class="publication-card" data-topic="further">
+                    <span class="topic-label">Further topics</span>
+                    <p>A threat next door? A research note on proximate interstate conflict causing willingness to fight based on Russia's invasion of Ukraine. 2026. <a href="https://doi.org/10.1093/ijpor/edag005"><i>International Journal of Public Opinion Research</i></a>, 38: online first.</p>
+                </div>
+
+                <div class="publication-card" data-topic="gender">
+                    <span class="topic-label">Gender inequalities</span>
+                    <p>Tailored to Women, Provided to Men? Gendered Occupational Inequality in Access to Flexible Working-Time Arrangements <i>(with Aljoscha Jacobi &amp; Tabea Naujoks)</i>. 2025. <a href="https://doi.org/10.1007/s11205-024-03483-9"><i>Social Indicators Research</i></a>, 176: 1179-1205.</p>
+                </div>
+
+                <div class="publication-card" data-topic="further">
+                    <span class="topic-label">Further topics</span>
+                    <p>Anti-Immigrant Bias in the Choice Between Punitive and Rehabilitative Justice <i>(with Sascha Riaz)</i>. 2025. <a href="https://doi.org/10.1017/S0007123425100884"><i>British Journal of Political Science</i></a>, 55: online first.</p>
+                </div>
+
+                <div class="publication-card" data-topic="gender">
+                    <span class="topic-label">Gender inequalities</span>
+                    <p>Gender Compositions of Occupations and Firms Jointly Shape Switches from Gender-Atypical Towards More Gender-Typical Positions <i>(with Eileen Peters)</i>. 2024. <a href="https://direct.mit.edu/euso/article/26/4/1170/127369/Gender-compositions-of-occupations-and-firms"><i>European Societies</i></a>, 26 (4): 1170-1194.</p>
+                </div>
+
+                <div class="publication-card" data-topic="gender">
+                    <span class="topic-label">Gender inequalities</span>
+                    <p>Intersections and Commonalities: Using Matching to Decompose Wage Gaps by Gender and Nativity in Germany <i>(with Maximilian Sprengholz)</i>. 2024. <a href="https://journals.sagepub.com/doi/10.1177/07308884221141100"><i>Work and Occupations</i></a>, 51 (2): 249-286.</p>
+                </div>
+
+                <div class="publication-card" data-topic="methodology">
+                    <span class="topic-label">Methodology</span>
+                    <p>Comparing the Incomparable? Issues of Lacking Common Support, Functional Form Mis-Specification, and Insufficient Sample Size in Decompositions <i>(with Maximilian Sprengholz)</i>. 2024. <a href="https://doi.org/10.1177/00811750231169729"><i>Sociological Methodology</i></a>, 53 (2): 344-365.</p>
+                </div>
+
+                <div class="publication-card" data-topic="gender service">
+                    <span class="topic-label">Gender inequalities</span>
+                    <p>Gender-Atypical Learning Experiences of Men Reduce Occupational Sex Segregation: Evidence from the Suspension of the Civilian Service in Germany. 2023. <a href="https://doi.org/10.1177/08912432231177650"><i>Gender &amp; Society</i></a>, 37 (4): 524-552.</p>
+                </div>
+
+                <div class="publication-card" data-topic="further gender">
+                    <span class="topic-label">Further topics</span>
+                    <p>Marriage, the Risk of Overeducation, and Selection into Both: Evidence from Germany <i>(with Paul Schmelzer)</i>. 2022. <a href="https://academic.oup.com/esr/article/38/1/73/6325499?guestAccessKey=199d875e-2e3e-45fb-9bd2-adc1cf27a74d"><i>European Sociological Review</i></a>, 38 (1): 73-87.</p>
+                </div>
+
+                <div class="publication-card" data-topic="gender">
+                    <span class="topic-label">Gender inequalities</span>
+                    <p>Can Regional Gender Ideologies Account for Variation of Gender Pay Gaps? The Case of Germany. 2021. <a href="https://www.mdpi.com/2076-0760/10/9/347"><i>Social Sciences</i></a>, 10 (9): 347.</p>
+                </div>
+
+                <div class="publication-card" data-topic="methodology">
+                    <span class="topic-label">Methodology</span>
+                    <p>Do-files for working with SOEP spell data <i>(with Paul Schmelzer &amp; Tobias Wolfram)</i>. 2018. <a href="http://www.diw.de/documents/publikationen/73/diw_01.c.581580.de/diw_ssp0492.pdf"><i>SOEP Survey Papers</i></a>, Series G: 492.</p>
+                </div>
             </div>
-			
+
 			<br>
             <div align="left">
 			<div class="header" id="wip">
@@ -153,123 +223,105 @@
 				</p>
 
 				<p>
-				<a href=https://osf.io/preprints/socarxiv/at32x_v1/>Russia's Invasion of Ukraine and Perceived Intergenerational Mobility in Czechia and Uruguay. An Unexpected Event During Survey Design Study </a> <i>(with Patrick Präg & Alexi Gugushvili; revise & resubmit at Social Science Research)</i>.
+				<a href="https://osf.io/preprints/socarxiv/at32x_v1/">Russia's Invasion of Ukraine and Perceived Intergenerational Mobility in Czechia and Uruguay. An Unexpected Event During Survey Design Study</a> <i>(with Patrick Pr&auml;g &amp; Alexi Gugushvili; revise & resubmit at Social Science Research)</i>.
 				</p>
 
 				<p>
 				The Flip Side of Gender Segregation: Cross-National and Temporal Variation in Men's Participation in Female-Dominated Occupations <i>(with Marga Torre; under review)</i>.
 				</p>
-				
+
 				<p>
-				Does Mandatory Military Service Shape Men's Occupational Choices? Evidence from the Suspension of Conscription Across Europe <i>(with Leandro Iván Canzio).</i>  
-				</p>	
-				
+				Does Mandatory Military Service Shape Men's Occupational Choices? Evidence from the Suspension of Conscription Across Europe <i>(with Leandro Iv&aacute;n Canzio).</i>
+				</p>
+
 				<p>
-				Male-Dominated Institutions and Gender Equality at Home: (The End of) Conscription in the United Kingdom <i>(with Leandro Iván Canzio).</i>
+				Male-Dominated Institutions and Gender Equality at Home: (The End of) Conscription in the United Kingdom <i>(with Leandro Iv&aacute;n Canzio).</i>
 				</p>
 
 				<p>
 				Within-Occupational Prestige Variation Across Workers <i>(with Ferdinand Geissler & Johannes Giesecke)</i>. &nbsp &nbsp<a href="https://doi.org/10.17605/OSF.IO/y6ap4"><i class="ai ai-preregistered ai-1x"></i></a>
 				</p>
-				
-				<!-- <p>
-				 Predictors of Working in More or Less Gender-Atypical Occupations: A Socio-Genomic Approach to Occupational Segregation of Women and Men <i>(with Tobias Wolfram & Evelina T. Akimova).</i> 
-				</p> -->
 
-				<!-- <p>
-				A Training for Parental Leave? Compulsory Civilian Service and Father's Uptake of Parental Leave in Germany <i>(with Tabea Naujoks).</i>
-				</p> -->
-				
 				<p>
-				Devaluation of 'Women's Work' or Work Done by Women? Experimental Evidence Across Countries <i>(with Marga Torre, Zoltán Lippényi, and Irene Prix).</i>
+				Devaluation of 'Women's Work' or Work Done by Women? Experimental Evidence Across Countries <i>(with Marga Torre, Zolt&aacute;n Lipp&eacute;nyi, and Irene Prix).</i>
 				</p>
-				
+
 				<p>
-				<a href="https://osf.io/preprints/socarxiv/awyr7/">"Do You Think That I Should Care?" Measuring Social Expectations About Cognitive Labor in Household Contexts</a> <i>(with Tabea Naujoks)</i>. 
+				<a href="https://osf.io/preprints/socarxiv/awyr7/">"Do You Think That I Should Care?" Measuring Social Expectations About Cognitive Labor in Household Contexts</a> <i>(with Tabea Naujoks)</i>.
 				</p>
-			
+
             </div>
 			<br>
-			
-			
+
+
             <div align="left">
-																																  
-		  
 
 			<div class="header" id="teaching">
 			<h3>Teaching Experience</h3>
 			</div>
-			
-						  
+
 				<p>
 				Introduction to Social Science Research <br>
 				 <i>Topics: Introduction to methodology of social science research, reading and writing academic manuscripts</i>
 				</p>
-		
-				   
+
 				<p>
 				Gender Inequalities - Theory and Empirics <br>
-				<i>Topics: Theories on gender inequalities in education, the labor market, and the domestic domain; from theory to empirical comparisons; designing quantitative studies</i> 
+				<i>Topics: Theories on gender inequalities in education, the labor market, and the domestic domain; from theory to empirical comparisons; designing quantitative studies</i>
 				</p>
-			
-				   
+
 				<p>
 				Academic Writing in Social Demography <br>
-				<i>Topics: Critical reading of manuscripts; assessing contributions; writing drafts and providing constructive feedback; describing results</i> 
+				<i>Topics: Critical reading of manuscripts; assessing contributions; writing drafts and providing constructive feedback; describing results</i>
 				</p>
-				
+
 				<p>
 				Empirical Social Research  <br>
 				<i>Topics: Designing and implementing students' survey experiments</i>
 				</p>
-				
+
 				<p>
 				Statistics  <br>
-				<i>Topics: Descriptive statistics, statistical inference and hypothesis testing, linear and logistic regression, exploratory factor analysis</i> 
+				<i>Topics: Descriptive statistics, statistical inference and hypothesis testing, linear and logistic regression, exploratory factor analysis</i>
 				 </p>
-				
 
-				   
 				<p>
 				What others think you can do, but you can't do, and what you can do about it  <br>
 				<i>Topics: Data wrangling, writing simulations to evaluate estimators, bootstrapping, further topics regarding regression analyses</i>
 				</p>
-				
-				
+
+
             </div>
 			<br>
-			
+
 			<div align="left">
-		  
 
 			<div class="header" id="software">
 			<h3>Software Development</h3>
 			</div>
-				
+
 				<ul style="text-indent: 0px; padding-left: 20px;">
 				<li> <a href="https://github.com/mhamjediers/nopo_decomposition">NOPO: Stata module to perform Nopo (2008) matching decompositions</a> <i> (with Maximilian Sprengholz)</i>.
-				
+
 				<li> <a href="https://github.com/mhamjediers/sankeyplot">SANKEYPLOT: Stata module to produce Sankey diagramms</a>.
 				</ul>
-											 
+
             </div>
 
 			<br>
-			
-			
+
+
         </section>
         <footer>
             <p style="margin-bottom:4cm;"></p>
             <p style="text-indent: 0px; padding-left: 0px;"><small>
-			This website uses the <a href="https://github.com/orderedlist/minimal">minimal theme</a>. 
-			It is inspired by Shiro Kuriwaki's <a href="https://www.shirokuriwaki.com/">website</a> 
+			This website uses the <a href="https://github.com/orderedlist/minimal">minimal theme</a>.
+			It is inspired by Shiro Kuriwaki's <a href="https://www.shirokuriwaki.com/">website</a>
 			and by Sascha Riaz' <a href="https://www.saschariaz.com/">website</a>.
 			</small></p>
         </footer>
-									
-																														   
+
     </div>
 </body>
 
-	   
 </html>
