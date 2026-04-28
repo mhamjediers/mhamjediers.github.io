@@ -307,7 +307,12 @@ font:hover {
 
 @media print, screen and (max-width: 720px) {
   body {
+    font-size: 13.5px;
     word-wrap:break-word;
+  }
+
+  .topic-filter {
+    font-size: 13.5px;
   }
 
   header {
